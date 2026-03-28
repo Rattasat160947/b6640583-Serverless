@@ -41,7 +41,7 @@ pipeline {
     stage('Verify Deployment') {
       steps {
         script {
-          sh "kubectl rollout status deployment/nginx-deployment --timeout=120s"
+          sh "kubectl rollout status deployment/nginx --timeout=120s"
           sh "kubectl get pods -l app=nginx"
           sh "kubectl get svc nginx-service"
           sh "kubectl get ingress nginx-ingress"
