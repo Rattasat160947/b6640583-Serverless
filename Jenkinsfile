@@ -8,7 +8,7 @@ pipeline {
   }
 
   environment {
-    APP_NAME  = 'my-nginx-web'
+    APP_NAME  = 'nginx-web'
     IMAGE_TAG = "${BUILD_NUMBER}"
   }
 
@@ -42,7 +42,7 @@ pipeline {
       steps {
         script {
           sh "kubectl rollout status deployment/nginx-deployment --timeout=120s"
-          sh "kubectl get pods -l app=my-nginx"
+          sh "kubectl get pods -l app=nginx"
           sh "kubectl get svc nginx-service"
           sh "kubectl get ingress nginx-ingress"
         }
@@ -52,7 +52,7 @@ pipeline {
 
   post {
     success {
-      echo "Deployment successful! Access at http://my-nginx.local"
+      echo "Deployment successful! Access at http://nginx.local"
     }
     failure {
       echo "Deployment failed! Check logs for details."
