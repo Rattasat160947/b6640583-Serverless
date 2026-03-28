@@ -22,16 +22,18 @@ spec:
         imagePullPolicy: Never
         args:
         - "-url"
-        - "http://jenkins.default.svc.cluster.local:8080"
+        - "http://jenkins-service" 
         - "-name"
         - "k8s-agent-1"
         - "-secret"
         - "$(JENKINS_SECRET)"
+        - "-tunnel"
+        - "jenkins-service:50000"
         - "-workDir"
         - "/home/jenkins/agent"
         env:
         - name: JENKINS_URL
-          value: "http://jenkins.default.svc.cluster.local:8080"
+          value: "http://jenkins-service"
         - name: JENKINS_SECRET
           valueFrom:
             secretKeyRef:
