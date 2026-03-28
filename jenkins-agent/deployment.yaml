@@ -14,6 +14,7 @@ spec:
       labels:
         app: jenkins-agent
     spec:
+      serviceAccountName: jenkins-admin
       securityContext:
         runAsUser: 0
       containers:
