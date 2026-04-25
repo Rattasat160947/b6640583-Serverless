@@ -3,8 +3,10 @@ kind: Ingress
 metadata:
   name: jenkins-ingress
   annotations:
+    # ใส่กลับเข้าไปเพื่อบังคับให้ controller อ่านไฟล์นี้
     kubernetes.io/ingress.class: "nginx"
 spec:
+  ingressClassName: nginx 
   rules:
   - host: jenkins.local
     http:
